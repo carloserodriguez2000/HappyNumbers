@@ -19,18 +19,14 @@ def makeNumList( sLine ):
 #
 def buildHappySqrArray(digitList):
     happyArray=list()
-##    happyArray=[[1],[2],[3]]
     index=0
     listLength=len(digitList)
-    #print(listLength)
     while ( index < listLength):
         digit = digitList[index]
         happyArray.append(int(digit)**2)
         index+=1
-                                                ##    for digit in digitList:
-                                                ##        happyArray.append(int(digit))
-    #print ('built',happyArray)
-
+                                            ##    for digit in digitList:
+                                            ##        happyArray.append(int(digit))
     return happyArray
 
 ################################################################################
@@ -49,16 +45,11 @@ def checkValidHappy(happyArray):
 ################################################################################
 #
 def CyclicSeqFound(happySumList):
-    #print( happySumList)
-    #iterate until first 4 is found
-    #iterated for pattern "4,16,37,58,89,145,42,20,4"
-   
     notHappyPattern=[4,16,37,58,89,145,42,20,4]
     if(notHappyPattern[0] in happySumList):
         startIndex = happySumList.index(4)          #find the first occurrance of 4
         if( (len(happySumList)-startIndex) >= len(notHappyPattern)):
             for num in notHappyPattern:
-                #print( num,happySumList[startIndex])
                 if (num == happySumList[startIndex]):
                     matching = True
                 else:
@@ -86,10 +77,6 @@ def main ():
                 happySquares  = buildHappySqrArray(digitList)        # List of squared digits
                 sumOfSqr      = calcHappySum(happySquares)
                 happySumList.append(sumOfSqr)    # Sum the squares and append to list
-##                print( digitList)
-##                print(happySquares)
-##                print(sumOfSqr   )
-##                print(happySumList)
                 sLine         = sumOfSqr
                 if(sumOfSqr == 1):
                     print('Happy found', happySumList)
