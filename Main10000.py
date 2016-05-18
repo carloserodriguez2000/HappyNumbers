@@ -17,6 +17,8 @@ def makeNumList( sLine ):
 
 ################################################################################
 #
+#    for digit in digitList:
+#        happyArray.append(int(digit))
 def buildHappySqrArray(digitList):
     happyArray=list()
     index=0
@@ -25,8 +27,6 @@ def buildHappySqrArray(digitList):
         digit = digitList[index]
         happyArray.append(int(digit)**2)
         index+=1
-                                            ##    for digit in digitList:
-                                            ##        happyArray.append(int(digit))
     return happyArray
 
 ################################################################################
@@ -59,7 +59,6 @@ def CyclicSeqFound(happySumList):
         else:  matching = False
     else:
          matching = False
-
   
     return matching
                         
@@ -67,30 +66,28 @@ def CyclicSeqFound(happySumList):
 #
 def main ():
     happySumList    = list()
-    continueLoop    = True
-    while (continueLoop == True):
-        sLine = input( 'Enter a Number: ')
-        if (checkValidNumber(sLine) == True):
-            moreNums        = True
-            while (moreNums == True) :
-                digitList     = makeNumList( sLine)                      # list of separated digits
-                happySquares  = buildHappySqrArray(digitList)        # List of squared digits
-                sumOfSqr      = calcHappySum(happySquares)
-                happySumList.append(sumOfSqr)    # Sum the squares and append to list
-                sLine         = sumOfSqr
-                if(sumOfSqr == 1):
-                    print('Happy found', happySumList)
+    moreNums        = True
+    index           = 0
+    while (index <=10000):
+        sLine = str(index)
+        moreNums        = True
+        while (moreNums == True) :
+            digitList     = makeNumList( sLine)                 # list of separated digits
+            happySquares  = buildHappySqrArray(digitList)        # List of squared digits
+            sumOfSqr      = calcHappySum(happySquares)
+            happySumList.append(sumOfSqr)    # Sum the squares and append to list
+            sLine         = sumOfSqr
+            ##print(happySumList)
+            if(sumOfSqr == 1):
+                print('Number:',index, 'is HAPPY!', happySumList)
+                moreNums = False
+            else:
+                if( (CyclicSeqFound(happySumList)== True) or (sumOfSqr==0)):
+                    print('Number:',index, 'is NOT happy', happySumList)
                     moreNums = False
-                else:
-                    if( CyclicSeqFound(happySumList)== True):
-                        print('NOT happy found', happySumList)
-                        moreNums = False
-                    
+        index+=1
         happySumList.clear()
-        continueLoop = (input("Press 1 to run again: ") == '1')
-    else :
-        print("Thank you for Playing.  Bye.")
-         
+     
 ################################################################################
 #
 ################################################################################

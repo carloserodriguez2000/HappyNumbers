@@ -10,7 +10,6 @@ def CyclicSeqFound(happySumList):
     startIndex = happySumList.index(4)          #find the first occurrance of 4
     if( (len(happySumList)-startIndex) >= len(notHappyPattern)):
         for num in notHappyPattern:
-            print ( num)
             print( num,happySumList[startIndex])
             if (num == happySumList[startIndex]):
                 matching = True
